@@ -40,6 +40,9 @@ jobs:
           git add train_report.html
           git diff --staged --quiet || git commit -m "auto: 更新训练报告 $(date +%Y-%m-%d)"
           git push
+          
+      - name: 创建首页入口
+        run: cp train_report.html index.html
 
       - name: 设置 Pages
         uses: actions/configure-pages@v4
