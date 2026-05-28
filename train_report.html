@@ -224,9 +224,9 @@ h1 { font-size:24px; margin-bottom:4px; }
     <h2>📊 本周概览</h2>
     <div class="header-right">
       <div class="week-nav">
-        <button onclick="prevWeek()" id="btnPrev" title="上一周">◂</button>
+        <button onclick="prevWeek()" id="btnPrev" title="上一周">\025C2</button>
         <span class="week-label" id="weekLabel"></span>
-        <button onclick="nextWeek()" id="btnNext" title="下一周">▸</button>
+        <button onclick="nextWeek()" id="btnNext" title="下一周">\025B8</button>
       </div>
       <div class="traffic-lights">
         <div class="traffic-dot red" title="隐藏面板" onclick="hideCards()"></div>
@@ -243,7 +243,6 @@ h1 { font-size:24px; margin-bottom:4px; }
   <div class="week-grid" id="weekGrid"></div>
 </div>
 
-<!-- 三栏面板 -->
 <div class="triple-panel" id="triplePanel">
   <div class="triple-col train-col">
     <h3>🏋️ 训练记录</h3>
@@ -262,10 +261,9 @@ h1 { font-size:24px; margin-bottom:4px; }
 <div id="detailSection"></div>
 <div class="warn" id="analysisBox"></div>
 
-<!-- ═══ 睡眠弹窗 ═══ -->
 <div class="modal-overlay" id="sleepModal">
   <div class="modal slp-modal">
-    <button class="modal-close" onclick="closeSleep()">✕</button>
+    <button class="modal-close" onclick="closeSleep()">\02715</button>
     <h2>😴 睡眠记录</h2>
     <div id="sleepPwdBox" class="pwd-box">
       <p style="color:#888;font-size:13px;margin-bottom:12px;">输入密码以管理睡眠记录</p>
@@ -274,7 +272,6 @@ h1 { font-size:24px; margin-bottom:4px; }
       <div class="pwd-error" id="sleepPwdErr"></div>
     </div>
     <div class="edit-form" id="sleepEditForm">
-      <!-- 日历选择器 -->
       <div class="date-picker-top">
         <label>📅 日期：</label>
         <input type="date" id="sleepDatePicker" onchange="onSleepDateChange()">
@@ -284,9 +281,7 @@ h1 { font-size:24px; margin-bottom:4px; }
         <button onclick="document.getElementById('importSleepFile').click()" title="从JSON文件导入睡眠数据">⬆ 导入</button>
         <input type="file" id="importSleepFile" accept=".json" onchange="importSleepData(event)">
       </div>
-      <!-- 已有记录列表 -->
       <div id="sleepRecordsList"></div>
-      <!-- 新增/编辑表单 -->
       <div id="sleepAddForm" style="display:none;">
         <div class="form-row">
           <div class="form-group"><label>入睡时间</label><input type="time" id="sBedTime"></div>
@@ -301,7 +296,6 @@ h1 { font-size:24px; margin-bottom:4px; }
           <div class="form-group"><label style="color:#42a5f5;">浅睡</label><input type="number" id="sLight" class="stage-input-light" placeholder="0" min="0" oninput="updateSleepPie()"></div>
           <div class="form-group"><label style="color:#1e88e5;">深睡</label><input type="number" id="sDeep" class="stage-input-deep" placeholder="0" min="0" oninput="updateSleepPie()"></div>
         </div>
-        <!-- 饼状图 -->
         <div class="pie-container" id="sleepPieContainer">
           <svg class="pie-svg" id="sleepPieSvg" width="140" height="140" viewBox="0 0 140 140"></svg>
           <div class="pie-legend" id="sleepPieLegend"></div>
@@ -318,10 +312,9 @@ h1 { font-size:24px; margin-bottom:4px; }
   </div>
 </div>
 
-<!-- ═══ 饮食弹窗 ═══ -->
 <div class="modal-overlay" id="dietModal">
   <div class="modal diet-modal">
-    <button class="modal-close" onclick="closeDiet()">✕</button>
+    <button class="modal-close" onclick="closeDiet()">\02715</button>
     <h2>🍽️ 饮食记录</h2>
     <div id="dietPwdBox" class="pwd-box">
       <p style="color:#888;font-size:13px;margin-bottom:12px;">输入密码以管理饮食记录</p>
@@ -330,7 +323,6 @@ h1 { font-size:24px; margin-bottom:4px; }
       <div class="pwd-error" id="dietPwdErr"></div>
     </div>
     <div class="edit-form" id="dietEditForm">
-      <!-- 日历选择器 -->
       <div class="date-picker-top">
         <label>📅 日期：</label>
         <input type="date" id="dietDatePicker" onchange="onDietDateChange()">
@@ -365,7 +357,43 @@ h1 { font-size:24px; margin-bottom:4px; }
 
 <script>
 // ═══ 全量训练数据 ═══
-const TRAINING_DATA = {};
+const TRAINING_DATA = {
+  "2026-04-01": {cardio:null,strength:[{name:"肩·腹肌·2",kcal:217,time:3269,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"25kg",rep:"15次"},{wt:"25kg",rep:"15次"},{wt:"25kg",rep:"15次"},{wt:"25kg",rep:"20次"}]},{name:"哑铃推肩",sets:[{wt:"5kg",rep:"12次"},{wt:"",rep:"8次"},{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"8次"},{wt:"12.5kg",rep:"8次"}]},{name:"半俯身侧平举",sets:[{wt:"7.5kg",rep:"12次"},{wt:"7.5kg",rep:"12次"},{wt:"7.5kg",rep:"12次"}]},{name:"杠铃直立划船",sets:[{wt:"20kg",rep:"12次"},{wt:"20kg",rep:"15次"},{wt:"20kg",rep:"15次"},{wt:"20kg",rep:"12次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"6kg",rep:"7次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"10次"},{wt:"2.5kg",rep:"10次"}]},{name:"杠铃俯身提拉",sets:[{wt:"20kg",rep:"15次"}]},{name:"悬挂抬腿",sets:[{wt:"",rep:"5次"},{wt:"",rep:"5次"}]},{name:"抬腿",sets:[{wt:"",rep:"10次"},{wt:"",rep:"10次"}]},{name:"卷腹",sets:[{wt:"0kg",rep:"10次"},{wt:"0kg",rep:"10次"}]}]}]},
+  "2026-04-02": {cardio:null,strength:[{name:"胸·三头·2",kcal:224,time:3427,exercises:[{name:"哑铃卧推",sets:[{wt:"5kg",rep:"15次"},{wt:"10kg",rep:"10次"},{wt:"15kg",rep:"12次"},{wt:"15kg",rep:"12次"},{wt:"17.5kg",rep:"8次"}]},{name:"把手式蝴蝶机飞鸟",sets:[{wt:"39kg",rep:"15次"},{wt:"39kg",rep:"12次"},{wt:"39kg",rep:"10次"}]},{name:"杠铃卧推",sets:[{wt:"30kg",rep:"10次"},{wt:"30kg",rep:"10次"},{wt:"35kg",rep:"6次"}]},{name:"绳索高位前拉",sets:[{wt:"15kg",rep:"13次"},{wt:"15kg",rep:"12次"},{wt:"12.5kg",rep:"7.5次"}]},{name:"绳索臂屈伸（单）",sets:[{wt:"2.5kg",rep:"10次"},{wt:"2.5kg",rep:"10次"},{wt:"2.5kg",rep:"10次"}]},{name:"坐姿杠铃过头臂屈伸",sets:[{wt:"15kg",rep:"12次"}]},{name:"碎颅者",sets:[{wt:"7.5kg",rep:"8次"}]},{name:"坐姿髋外展",sets:[{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"}]},{name:"坐姿髋内收",sets:[{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"}]},{name:"器械臀冲",sets:[{wt:"36kg",rep:"12次"},{wt:"36kg",rep:"12次"}]}]}]},
+  "2026-04-04": {cardio:null,strength:[{name:"背·二头",kcal:238,time:3613,exercises:[{name:"引体向上（辅助）",sets:[{wt:"74.8kg",rep:"12次"},{wt:"68kg",rep:"10次"},{wt:"68kg",rep:"8次"},{wt:"68kg",rep:"4次"}]},{name:"宽握反手下拉",sets:[{wt:"36kg",rep:"12次"},{wt:"36kg",rep:"13次"},{wt:"36kg",rep:"12次"},{wt:"36kg",rep:"12次"},{wt:"36kg",rep:"10次"},{wt:"29kg",rep:"12次"}]},{name:"拉杆坐姿划船(窄握)",sets:[{wt:"29kg",rep:"12次"},{wt:"29kg",rep:"12次"},{wt:"29kg",rep:"10次"}]},{name:"对握高位下拉",sets:[{wt:"36kg",rep:"12次"},{wt:"29kg",rep:"10次"},{wt:"29kg",rep:"12次"}]},{name:"坐姿划船",sets:[{wt:"23kg",rep:"15次"},{wt:"23kg",rep:"12次"},{wt:"23kg",rep:"10次"}]},{name:"绳索直臂下拉 II",sets:[{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"7次"}]},{name:"哑铃弯举",sets:[{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"6.5次"},{wt:"7.5kg",rep:"10次"}]},{name:"锤式弯举",sets:[{wt:"5kg",rep:"15次"},{wt:"5kg",rep:"15次"},{wt:"5kg",rep:"15次"}]},{name:"集中弯举",sets:[{wt:"7.5kg",rep:"5次"},{wt:"7.5kg",rep:"4次"}]}]}]},
+  "2026-04-05": {cardio:null,strength:[{name:"肩·腹肌",kcal:154,time:2389,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"}]},{name:"器械坐姿推举",sets:[{wt:"35kg",rep:"18次"}]},{name:"哑铃推肩",sets:[{wt:"20kg",rep:"8次"},{wt:"15kg",rep:"9次"},{wt:"15kg",rep:"6次"},{wt:"10kg",rep:"16次"}]},{name:"Y字绳索侧平举",sets:[{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"12次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"3.5kg",rep:"10次"},{wt:"4.5kg",rep:"10次"}]},{name:"抬腿",sets:[{wt:"",rep:"10次"},{wt:"7.5kg",rep:"3.5次"},{wt:"5kg",rep:"10次"}]}]}]},
+  "2026-04-06": {cardio:null,strength:[{name:"胸·三头",kcal:166,time:2581,exercises:[{name:"杠铃卧推",sets:[{wt:"20kg",rep:"8次"},{wt:"30kg",rep:"5次"},{wt:"40kg",rep:"10次"},{wt:"40kg",rep:"9次"},{wt:"40kg",rep:"6次"}]},{name:"上斜哑铃卧推",sets:[{wt:"15kg",rep:"6次"},{wt:"15kg",rep:"8次"},{wt:"10kg",rep:"15次"},{wt:"10kg",rep:"15次"}]},{name:"双杠臂屈伸",sets:[{wt:"0kg",rep:"8次"},{wt:"0kg",rep:"8次"},{wt:"0kg",rep:"8次"}]},{name:"绳索过头臂屈伸",sets:[{wt:"10kg",rep:"15次"},{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"10次"}]},{name:"器械推胸（版本2）",sets:[{wt:"26kg",rep:"15次"},{wt:"26kg",rep:"15次"},{wt:"26kg",rep:"15次"},{wt:"26kg",rep:"12次"}]}]}]},
+  "2026-04-18": {cardio:null,strength:[{name:"背·二头",kcal:174,time:2451,exercises:[{name:"引体向上（辅助）",sets:[{wt:"68kg",rep:"8次"},{wt:"68kg",rep:"8次"},{wt:"68kg",rep:"8次"}]},{name:"宽握反手下拉",sets:[{wt:"29kg",rep:"12次"},{wt:"29kg",rep:"12次"},{wt:"29kg",rep:"12次"},{wt:"29kg",rep:"12次"},{wt:"29kg",rep:"12次"}]},{name:"拉杆坐姿划船(窄握)",sets:[{wt:"29kg",rep:"10次"},{wt:"23kg",rep:"10次"},{wt:"23kg",rep:"10次"}]},{name:"对握高位下拉",sets:[{wt:"23kg",rep:"15次"},{wt:"23kg",rep:"15次"},{wt:"23kg",rep:"15次"}]},{name:"坐姿划船",sets:[{wt:"23kg",rep:"12次"},{wt:"23kg",rep:"11次"}]},{name:"绳索直臂下拉 II",sets:[{wt:"15kg",rep:"8次"},{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"8次"}]},{name:"哑铃弯举",sets:[{wt:"7.5kg",rep:"12次"},{wt:"7.5kg",rep:"12次"},{wt:"7.5kg",rep:"10次"}]},{name:"锤式弯举",sets:[{wt:"5kg",rep:"15次"},{wt:"5kg",rep:"15次"},{wt:"5kg",rep:"12次"}]}]}]},
+  "2026-04-19": {cardio:null,strength:[{name:"肩·腹肌",kcal:149,time:2438,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"25kg",rep:"18次"},{wt:"25kg",rep:"18次"}]},{name:"器械坐姿推举",sets:[{wt:"35kg",rep:"18次"},{wt:"35kg",rep:"15次"},{wt:"35kg",rep:"4次"}]},{name:"哑铃推肩",sets:[{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"7次"}]},{name:"Y字绳索侧平举",sets:[{wt:"3.5kg",rep:"18次"},{wt:"3.5kg",rep:"18次"},{wt:"3.5kg",rep:"18次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"12次"}]}]}]},
+  "2026-04-20": {cardio:null,strength:[{name:"腿",kcal:168,time:2520,exercises:[{name:"坐姿腿屈伸",sets:[{wt:"42.2kg",rep:"12次"},{wt:"42.2kg",rep:"12次"},{wt:"42.2kg",rep:"12次"},{wt:"42.2kg",rep:"12次"}]},{name:"坐姿腿弯举",sets:[{wt:"34.9kg",rep:"12次"},{wt:"34.9kg",rep:"12次"},{wt:"34.9kg",rep:"12次"}]},{name:"哑铃酒杯深蹲",sets:[{wt:"30kg",rep:"10次"},{wt:"30kg",rep:"10次"},{wt:"30kg",rep:"10次"},{wt:"30kg",rep:"7次"}]},{name:"坐姿髋外展",sets:[{wt:"27kg",rep:"17次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"}]},{name:"坐姿髋内收",sets:[{wt:"27kg",rep:"15次"},{wt:"27kg",rep:"15次"},{wt:"27kg",rep:"15次"},{wt:"27kg",rep:"15次"}]},{name:"抬腿",sets:[{wt:"0kg",rep:"12次"},{wt:"0kg",rep:"12次"}]}]}]},
+  "2026-04-22": {cardio:null,strength:[{name:"背·二头·2",kcal:236,time:3572,exercises:[{name:"引体向上（辅助）",sets:[{wt:"68kg",rep:"10次"},{wt:"68kg",rep:"8次"},{wt:"68kg",rep:"8次"},{wt:"68kg",rep:"6次"}]},{name:"宽握反手下拉",sets:[{wt:"29kg",rep:"18次"},{wt:"29kg",rep:"15次"},{wt:"29kg",rep:"15次"},{wt:"29kg",rep:"15次"},{wt:"29kg",rep:"15次"},{wt:"29kg",rep:"15次"}]},{name:"拉杆坐姿划船(窄握)",sets:[{wt:"29kg",rep:"12次"},{wt:"29kg",rep:"12次"},{wt:"29kg",rep:"10次"}]},{name:"对握高位下拉",sets:[{wt:"29kg",rep:"15次"},{wt:"29kg",rep:"12次"},{wt:"29kg",rep:"12次"}]},{name:"坐姿划船",sets:[{wt:"23kg",rep:"12次"},{wt:"23kg",rep:"12次"},{wt:"23kg",rep:"10次"},{wt:"23kg",rep:"12次"}]},{name:"绳索直臂下压",sets:[{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"10次"}]},{name:"锤式弯举",sets:[{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"10次"},{wt:"7.5kg",rep:"10次"}]},{name:"上斜哑铃弯举",sets:[{wt:"7.5kg",rep:"7次"},{wt:"7.5kg",rep:"7次"},{wt:"7.5kg",rep:"5.5次"}]}]}]},
+  "2026-04-23": {cardio:null,strength:[{name:"肩·腹肌·2",kcal:227,time:3542,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"25kg",rep:"20次"},{wt:"32kg",rep:"17次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"}]},{name:"哑铃推肩",sets:[{wt:"20kg",rep:"10次"},{wt:"20kg",rep:"10次"},{wt:"15kg",rep:"8次"},{wt:"15kg",rep:"5次"}]},{name:"半俯身侧平举",sets:[{wt:"7.5kg",rep:"15次"},{wt:"7.5kg",rep:"12次"},{wt:"7.5kg",rep:"12次"},{wt:"7.5kg",rep:"12次"}]},{name:"杠铃直立划船",sets:[{wt:"20kg",rep:"15次"},{wt:"20kg",rep:"15次"},{wt:"20kg",rep:"15次"},{wt:"30kg",rep:"12次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"12次"},{wt:"3.5kg",rep:"12次"},{wt:"3.5kg",rep:"12次"}]},{name:"杠铃俯身提拉",sets:[{wt:"20kg",rep:"15次"},{wt:"30kg",rep:"10次"}]},{name:"悬挂抬腿",sets:[{wt:"",rep:"5次"},{wt:"",rep:"6次"}]},{name:"抬腿",sets:[{wt:"",rep:"12次"},{wt:"",rep:"12次"}]}]}]},
+  "2026-04-24": {cardio:null,strength:[{name:"胸·三头·2",kcal:149,time:2123,exercises:[{name:"硬拉",sets:[{wt:"25kg",rep:"12次"},{wt:"40kg",rep:"8次"},{wt:"70kg",rep:"5次"},{wt:"100kg",rep:"3次"},{wt:"100kg",rep:"3次"}]},{name:"哑铃卧推",sets:[{wt:"17.5kg",rep:"8次"},{wt:"17.5kg",rep:"5次"},{wt:"15kg",rep:"6次"}]},{name:"把手式蝴蝶机飞鸟",sets:[{wt:"39kg",rep:"15次"},{wt:"45kg",rep:"15次"},{wt:"45kg",rep:"15次"}]},{name:"杠铃卧推",sets:[{wt:"40kg",rep:"10次"},{wt:"40kg",rep:"9次"},{wt:"40kg",rep:"4次"},{wt:"40kg",rep:"4次"}]},{name:"反手三头臂屈伸",sets:[{wt:"15kg",rep:"12次"},{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"8次"}]},{name:"绳索臂屈伸（单）",sets:[{wt:"3.75kg",rep:"12次"},{wt:"3.75kg",rep:"12次"},{wt:"3.75kg",rep:"12次"}]}]}]},
+  "2026-04-25": {cardio:null,strength:[{name:"背·二头",kcal:226,time:3420,exercises:[{name:"引体向上（辅助）",sets:[{wt:"61.2kg",rep:"8次"},{wt:"61.2kg",rep:"8次"},{wt:"61.2kg",rep:"8次"},{wt:"68kg",rep:"5次"}]},{name:"宽握反手下拉",sets:[{wt:"29kg",rep:"15次"},{wt:"31.5kg",rep:"15次"},{wt:"31.5kg",rep:"15次"},{wt:"31.5kg",rep:"15次"},{wt:"31.5kg",rep:"12次"},{wt:"31.5kg",rep:"10次"}]},{name:"拉杆坐姿划船(窄握)",sets:[{wt:"23kg",rep:"15次"},{wt:"25.5kg",rep:"12次"},{wt:"25.5kg",rep:"12次"}]},{name:"对握高位下拉",sets:[{wt:"25.5kg",rep:"15次"},{wt:"25.5kg",rep:"15次"},{wt:"31.5kg",rep:"15次"}]},{name:"坐姿划船",sets:[{wt:"28kg",rep:"12次"},{wt:"28kg",rep:"9次"}]},{name:"绳索直臂下拉 II",sets:[{wt:"15kg",rep:"12次"},{wt:"15kg",rep:"8.5次"},{wt:"15kg",rep:"4次"}]},{name:"哑铃弯举",sets:[{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"10次"},{wt:"7.5kg",rep:"8.5次"}]},{name:"锤式弯举",sets:[{wt:"5kg",rep:"12次"},{wt:"5kg",rep:"15次"},{wt:"5kg",rep:"12次"}]},{name:"集中弯举",sets:[{wt:"10kg",rep:"3次"}]}]}]},
+  "2026-04-26": {cardio:null,strength:[{name:"肩·腹肌",kcal:225,time:3444,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"32kg",rep:"18次"},{wt:"32kg",rep:"18次"},{wt:"32kg",rep:"12次"},{wt:"25kg",rep:"18次"}]},{name:"器械坐姿推举",sets:[{wt:"40kg",rep:"15次"},{wt:"40kg",rep:"15次"},{wt:"40kg",rep:"15次"},{wt:"35kg",rep:"18次"}]},{name:"哑铃推肩",sets:[{wt:"7.5kg",rep:"8次"},{wt:"20kg",rep:"10次"},{wt:"20kg",rep:"6次"},{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"6次"}]},{name:"Y字绳索侧平举",sets:[{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"12次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"6kg",rep:"4次"},{wt:"6kg",rep:"7.5次"},{wt:"3.75kg",rep:"12次"},{wt:"3.75kg",rep:"15次"}]},{name:"抬腿",sets:[{wt:"0kg",rep:"12次"},{wt:"0kg",rep:"12次"}]},{name:"悬挂抬腿",sets:[{wt:"",rep:"10次"},{wt:"",rep:"4次"}]}]}]},
+  "2026-04-27": {cardio:null,strength:[{name:"胸·三头",kcal:154,time:2484,exercises:[{name:"杠铃卧推",sets:[{wt:"20kg",rep:"12次"},{wt:"45kg",rep:"8次"},{wt:"45kg",rep:"8次"},{wt:"45kg",rep:"5次"},{wt:"45kg",rep:"5次"}]},{name:"器械胸部推举",sets:[{wt:"18kg",rep:"15次"}]},{name:"上斜哑铃卧推",sets:[{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"10次"},{wt:"10kg",rep:"15次"},{wt:"10kg",rep:"15次"}]},{name:"双杠臂屈伸",sets:[{wt:"0kg",rep:"12次"},{wt:"0kg",rep:"10次"}]},{name:"绳索臂屈伸（单）",sets:[{wt:"5kg",rep:"10次"},{wt:"5kg",rep:"9.5次"},{wt:"5kg",rep:"8.5次"},{wt:"5kg",rep:"8.5次"}]}]}]},
+  "2026-04-29": {cardio:null,strength:[{name:"肩·腹肌·2",kcal:162,time:2513,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"}]},{name:"哑铃推肩",sets:[{wt:"20kg",rep:"10次"},{wt:"20kg",rep:"8次"},{wt:"20kg",rep:"6次"},{wt:"20kg",rep:"5.5次"}]},{name:"半俯身侧平举",sets:[{wt:"7.5kg",rep:"15次"},{wt:"7.5kg",rep:"12次"},{wt:"7.5kg",rep:"12次"},{wt:"7.5kg",rep:"12次"}]},{name:"杠铃直立划船",sets:[{wt:"30kg",rep:"12次"},{wt:"30kg",rep:"12次"},{wt:"30kg",rep:"12次"},{wt:"30kg",rep:"12次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"5kg",rep:"10次"},{wt:"5kg",rep:"7.5次"},{wt:"5kg",rep:"5次"}]}]}]},
+  "2026-04-30": {cardio:null,strength:[{name:"胸·三头·2",kcal:177,time:2782,exercises:[{name:"硬拉",sets:[{wt:"100kg",rep:"3次"},{wt:"100kg",rep:"3次"}]},{name:"哑铃卧推",sets:[{wt:"7.5kg",rep:"12次"},{wt:"10kg",rep:"8次"},{wt:"17.5kg",rep:"10次"},{wt:"20kg",rep:"8次"},{wt:"20kg",rep:"8次"},{wt:"20kg",rep:"8次"}]},{name:"把手式蝴蝶机飞鸟",sets:[{wt:"45kg",rep:"10次"},{wt:"45kg",rep:"8次"},{wt:"35kg",rep:"15次"}]},{name:"杠铃卧推",sets:[{wt:"45kg",rep:"6次"},{wt:"45kg",rep:"8次"},{wt:"45kg",rep:"4次"}]},{name:"反手三头臂屈伸",sets:[{wt:"15kg",rep:"12次"},{wt:"15kg",rep:"12次"},{wt:"15kg",rep:"12次"}]},{name:"绳索臂屈伸（单）",sets:[{wt:"2.5kg",rep:"15次"},{wt:"2.5kg",rep:"18次"},{wt:"2.5kg",rep:"18次"}]}]}]},
+  "2026-05-04": {cardio:null,strength:[{name:"背·二头·2",kcal:206,time:3094,exercises:[{name:"宽距高位下拉",sets:[{wt:"50kg",rep:"6次"},{wt:"57kg",rep:"6次"},{wt:"50kg",rep:"6次"},{wt:"50kg",rep:"6次"}]},{name:"宽握反手下拉",sets:[{wt:"43kg",rep:"10次"},{wt:"43kg",rep:"10次"},{wt:"43kg",rep:"8次"},{wt:"43kg",rep:"10次"},{wt:"43kg",rep:"10次"},{wt:"43kg",rep:"10次"}]},{name:"拉杆坐姿划船(窄握)",sets:[{wt:"36kg",rep:"8次"},{wt:"36kg",rep:"8次"},{wt:"36kg",rep:"8次"},{wt:"36kg",rep:"8次"}]},{name:"对握高位下拉",sets:[{wt:"36kg",rep:"12次"},{wt:"36kg",rep:"12次"},{wt:"36kg",rep:"12次"}]},{name:"坐姿划船",sets:[{wt:"23kg",rep:"5次"}]},{name:"绳索直臂下压",sets:[{wt:"15kg",rep:"12次"},{wt:"17.5kg",rep:"10次"},{wt:"17.5kg",rep:"10次"},{wt:"17.5kg",rep:"9.5次"}]},{name:"锤式弯举",sets:[{wt:"7.5kg",rep:"12次"},{wt:"10kg",rep:"8次"}]},{name:"牧师凳弯举",sets:[{wt:"20kg",rep:"10次"},{wt:"20kg",rep:"5.5次"}]}]}]},
+  "2026-05-05": {cardio:null,strength:[{name:"肩·腹肌",kcal:368,time:6614,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"25kg",rep:"18次"},{wt:"25kg",rep:"18次"},{wt:"25kg",rep:"18次"},{wt:"25kg",rep:"15次"}]},{name:"哑铃推肩",sets:[{wt:"20kg",rep:"12次"},{wt:"20kg",rep:"8次"},{wt:"18kg",rep:"8次"},{wt:"16kg",rep:"10次"}]},{name:"器械坐姿推举",sets:[{wt:"35kg",rep:"10次"},{wt:"35kg",rep:"10次"},{wt:"30kg",rep:"12次"},{wt:"30kg",rep:"8次"}]},{name:"Y字绳索侧平举",sets:[{wt:"5kg",rep:"8次"},{wt:"5kg",rep:"10次"},{wt:"5kg",rep:"8次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"2.5kg",rep:"10次"},{wt:"2.5kg",rep:"16次"},{wt:"2.5kg",rep:"15次"}]},{name:"绳索跪姿卷腹",sets:[{wt:"20kg",rep:"12次"},{wt:"20kg",rep:"12次"},{wt:"20kg",rep:"15次"},{wt:"25kg",rep:"15次"},{wt:"25kg",rep:"15次"},{wt:"25kg",rep:"15次"},{wt:"25kg",rep:"15次"}]}]}]},
+  "2026-05-06": {cardio:null,strength:[{name:"胸·三头",kcal:199,time:3358,exercises:[{name:"杠铃卧推",sets:[{wt:"25kg",rep:"8次"},{wt:"55kg",rep:"6次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"}]},{name:"蝴蝶机飞鸟",sets:[{wt:"40kg",rep:"10次"},{wt:"40kg",rep:"10次"},{wt:"40kg",rep:"10次"}]},{name:"上斜哑铃卧推",sets:[{wt:"16kg",rep:"10次"},{wt:"16kg",rep:"12次"},{wt:"16kg",rep:"8次"},{wt:"10kg",rep:"8次"}]},{name:"双杠臂屈伸",sets:[{wt:"0kg",rep:"12次"}]},{name:"直杆绳索下压",sets:[{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"15次"},{wt:"12.5kg",rep:"11次"},{wt:"12.5kg",rep:"12次"},{wt:"12.5kg",rep:"12次"}]}]}]},
+  "2026-05-08": {cardio:null,strength:[{name:"背·二头",kcal:226,time:3418,exercises:[{name:"宽距高位下拉",sets:[{wt:"50kg",rep:"12次"},{wt:"50kg",rep:"12次"},{wt:"50kg",rep:"12次"}]},{name:"宽握反手下拉",sets:[{wt:"35kg",rep:"12次"},{wt:"35kg",rep:"12次"},{wt:"35kg",rep:"12次"},{wt:"35kg",rep:"12次"},{wt:"40kg",rep:"10次"},{wt:"35kg",rep:"12次"}]},{name:"拉杆坐姿划船(窄握)",sets:[{wt:"30kg",rep:"12次"},{wt:"30kg",rep:"12次"},{wt:"30kg",rep:"12次"}]},{name:"对握高位下拉",sets:[{wt:"35kg",rep:"15次"},{wt:"35kg",rep:"15次"},{wt:"35kg",rep:"15次"}]},{name:"坐姿划船",sets:[{wt:"30kg",rep:"12次"},{wt:"30kg",rep:"12次"},{wt:"25kg",rep:"12次"}]},{name:"绳索直臂下拉 II",sets:[{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"8次"},{wt:"15kg",rep:"7次"}]},{name:"哑铃弯举",sets:[{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"12次"},{wt:"10kg",rep:"8次"}]},{name:"锤式弯举",sets:[{wt:"6kg",rep:"12次"},{wt:"6kg",rep:"12次"},{wt:"6kg",rep:"12次"}]},{name:"集中弯举",sets:[{wt:"12kg",rep:"3次"}]}]}]},
+  "2026-05-09": {cardio:null,strength:[{name:"肩·腹肌·2",kcal:302,time:4727,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"},{wt:"25kg",rep:"10次"}]},{name:"哑铃推肩",sets:[{wt:"22kg",rep:"8次"},{wt:"22kg",rep:"8次"},{wt:"22kg",rep:"8次"},{wt:"16kg",rep:"10次"}]},{name:"半俯身侧平举",sets:[{wt:"6kg",rep:"15次"},{wt:"6kg",rep:"15次"},{wt:"6kg",rep:"10次"},{wt:"6kg",rep:"10次"}]},{name:"杠铃直立划船",sets:[{wt:"30kg",rep:"12次"},{wt:"35kg",rep:"12次"},{wt:"35kg",rep:"12次"},{wt:"35kg",rep:"12次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"5kg",rep:"10次"},{wt:"5kg",rep:"7.5次"},{wt:"5kg",rep:"5.5次"},{wt:"5kg",rep:"7次"}]},{name:"绳索跪姿卷腹",sets:[{wt:"25kg",rep:"15次"},{wt:"30kg",rep:"12次"},{wt:"30kg",rep:"12次"},{wt:"30kg",rep:"8次"},{wt:"30kg",rep:"10次"},{wt:"30kg",rep:"12次"}]},{name:"硬拉",sets:[{wt:"100kg",rep:"4次"},{wt:"100kg",rep:"4次"},{wt:"100kg",rep:"3次"}]},{name:"坐姿髋外展",sets:[{wt:"30kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"}]},{name:"坐姿髋内收",sets:[{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"}]}]}]},
+  "2026-05-10": {cardio:null,strength:[{name:"胸·三头·2",kcal:173,time:2636,exercises:[{name:"哑铃卧推",sets:[{wt:"7kg",rep:"7次"},{wt:"22.5kg",rep:"10次"},{wt:"22.5kg",rep:"10次"},{wt:"22.5kg",rep:"10次"},{wt:"22.5kg",rep:"6.5次"}]},{name:"把手式蝴蝶机飞鸟",sets:[{wt:"45kg",rep:"15次"},{wt:"45kg",rep:"12次"},{wt:"45kg",rep:"15次"}]},{name:"杠铃卧推",sets:[{wt:"55kg",rep:"5次"},{wt:"50kg",rep:"6次"},{wt:"50kg",rep:"5次"},{wt:"50kg",rep:"2次"}]},{name:"反手三头臂屈伸",sets:[{wt:"21.25kg",rep:"8次"},{wt:"21.25kg",rep:"9.5次"},{wt:"21.25kg",rep:"5.5次"}]},{name:"绳索臂屈伸（单）",sets:[{wt:"7.5kg",rep:"6次"},{wt:"5kg",rep:"10次"},{wt:"5kg",rep:"10次"}]},{name:"器械臀冲",sets:[{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"}]}]}]},
+  "2026-05-12": {cardio:null,strength:[{name:"背·二头·2",kcal:248,time:3630,exercises:[{name:"宽距高位下拉",sets:[{wt:"20kg",rep:"10次"},{wt:"36kg",rep:"6次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"}]},{name:"宽握反手下拉",sets:[{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"38.5kg",rep:"12次"},{wt:"38.5kg",rep:"12次"},{wt:"38.5kg",rep:"12次"}]},{name:"拉杆坐姿划船(窄握)",sets:[{wt:"36kg",rep:"10次"},{wt:"36kg",rep:"10次"},{wt:"36kg",rep:"10次"},{wt:"36kg",rep:"8次"}]},{name:"对握高位下拉",sets:[{wt:"36kg",rep:"12次"},{wt:"38.5kg",rep:"12次"},{wt:"38.8kg",rep:"12次"},{wt:"38.8kg",rep:"12次"}]},{name:"坐姿划船",sets:[{wt:"29kg",rep:"10次"},{wt:"29kg",rep:"10次"},{wt:"29kg",rep:"10次"},{wt:"29kg",rep:"8次"}]},{name:"绳索直臂下压",sets:[{wt:"17.5kg",rep:"7.5次"},{wt:"15kg",rep:"10次"},{wt:"17.5kg",rep:"9次"}]},{name:"锤式弯举",sets:[{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"6次"}]},{name:"牧师凳弯举",sets:[{wt:"20kg",rep:"4次"},{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"8次"}]}]}]},
+  "2026-05-13": {cardio:null,strength:[{name:"肩·腹肌",kcal:242,time:3901,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"}]},{name:"哑铃推肩",sets:[{wt:"22.5kg",rep:"10次"},{wt:"20kg",rep:"10次"},{wt:"20kg",rep:"7次"},{wt:"17.5kg",rep:"8次"}]},{name:"器械坐姿推举",sets:[{wt:"35kg",rep:"8次"},{wt:"35kg",rep:"8次"}]},{name:"Y字绳索侧平举",sets:[{wt:"3.5kg",rep:"12次"},{wt:"3.5kg",rep:"12次"},{wt:"3.5kg",rep:"12次"},{wt:"3.5kg",rep:"12次"},{wt:"3.5kg",rep:"12次"},{wt:"3.5kg",rep:"12次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"15次"},{wt:"3.5kg",rep:"14.5次"}]},{name:"绳索跪姿卷腹",sets:[{wt:"25kg",rep:"15次"},{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"}]}]}]},
+  "2026-05-14": {cardio:null,strength:[{name:"胸·三头",kcal:178,time:2637,exercises:[{name:"杠铃卧推",sets:[{wt:"20kg",rep:"12次"},{wt:"25kg",rep:"8次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"6次"},{wt:"50kg",rep:"4次"}]},{name:"蝴蝶机飞鸟",sets:[{wt:"40kg",rep:"12次"},{wt:"40kg",rep:"12次"},{wt:"40kg",rep:"15次"},{wt:"40kg",rep:"15次"},{wt:"40kg",rep:"15次"},{wt:"40kg",rep:"12次"}]},{name:"上斜哑铃卧推",sets:[{wt:"17.5kg",rep:"8次"},{wt:"17.5kg",rep:"8次"},{wt:"17.5kg",rep:"8次"},{wt:"17.5kg",rep:"8次"}]},{name:"直杆绳索下压",sets:[{wt:"12.5kg",rep:"15次"},{wt:"15kg",rep:"15次"},{wt:"15kg",rep:"13次"},{wt:"12.5kg",rep:"12次"},{wt:"17.5kg",rep:"7.5次"}]},{name:"绳索臂屈伸（单）",sets:[{wt:"5kg",rep:"10次"},{wt:"5kg",rep:"10次"}]}]}]},
+  "2026-05-16": {cardio:null,strength:[{name:"肩·腹肌·2",kcal:88,time:1482,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"31.8kg",rep:"10次"},{wt:"31.8kg",rep:"15次"},{wt:"31.8kg",rep:"15次"},{wt:"31.8kg",rep:"10次"}]},{name:"哑铃推肩",sets:[{wt:"20kg",rep:"10次"},{wt:"20kg",rep:"10次"},{wt:"20kg",rep:"7次"},{wt:"17.5kg",rep:"10次"}]}]}]},
+  "2026-05-18": {cardio:[{type:"室内跑步",kcal:250,time:1234,hr:154,dist:1.48}],strength:[{name:"背·二头·2",kcal:156,time:2165,exercises:[{name:"宽距高位下拉",sets:[{wt:"20kg",rep:"12次"},{wt:"40kg",rep:"8次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"},{wt:"50kg",rep:"8次"}]},{name:"宽握反手下拉",sets:[{wt:"38.5kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"10次"}]},{name:"拉杆坐姿划船(窄握)",sets:[{wt:"36kg",rep:"8次"},{wt:"36kg",rep:"8次"},{wt:"36kg",rep:"8次"},{wt:"36kg",rep:"6次"}]},{name:"对握高位下拉",sets:[{wt:"38.8kg",rep:"8.5次"}]},{name:"绳索直臂下压",sets:[{wt:"17.5kg",rep:"11.5次"},{wt:"17.5kg",rep:"9.5次"},{wt:"17.5kg",rep:"7次"}]},{name:"锤式弯举",sets:[{wt:"10kg",rep:"12次"},{wt:"10kg",rep:"7次"}]}]}]},
+  "2026-05-19": {cardio:[{type:"室内跑步",kcal:242,time:1286,hr:151,dist:1.5}],strength:[{name:"肩·腹肌",kcal:235,time:3751,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"32kg",rep:"15次"},{wt:"32kg",rep:"15次"},{wt:"39kg",rep:"12次"},{wt:"39kg",rep:"10次"}]},{name:"哑铃推肩",sets:[{wt:"20kg",rep:"12次"},{wt:"20kg",rep:"12次"},{wt:"20kg",rep:"12次"},{wt:"20kg",rep:"8次"}]},{name:"Y字绳索侧平举",sets:[{wt:"5kg",rep:"10次"},{wt:"5kg",rep:"10次"},{wt:"4.5kg",rep:"10次"},{wt:"4.5kg",rep:"10次"},{wt:"4.5kg",rep:"10次"},{wt:"4.5kg",rep:"10次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"4.5kg",rep:"12次"},{wt:"4.5kg",rep:"12次"},{wt:"4.5kg",rep:"12次"}]},{name:"面拉",sets:[{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"12次"},{wt:"15kg",rep:"12次"}]},{name:"绳索跪姿卷腹",sets:[{wt:"30kg",rep:"18次"},{wt:"30kg",rep:"18次"},{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"},{wt:"30kg",rep:"15次"}]}]}]},
+  "2026-05-20": {cardio:null,strength:[{name:"胸·三头",kcal:215,time:3321,exercises:[{name:"杠铃卧推",sets:[{wt:"20kg",rep:"12次"},{wt:"40kg",rep:"6次"},{wt:"45kg",rep:"12次"},{wt:"45kg",rep:"11次"},{wt:"45kg",rep:"6次"},{wt:"40kg",rep:"8次"}]},{name:"上斜哑铃卧推",sets:[{wt:"17.5kg",rep:"12次"},{wt:"17.5kg",rep:"12次"},{wt:"17.5kg",rep:"8次"},{wt:"17.5kg",rep:"8次"}]},{name:"蝴蝶机飞鸟",sets:[{wt:"40kg",rep:"15次"},{wt:"46kg",rep:"12次"},{wt:"46kg",rep:"12次"},{wt:"46kg",rep:"12次"}]},{name:"双杠臂屈伸（辅助）",sets:[{wt:"68kg",rep:"12次"},{wt:"54.4kg",rep:"12次"},{wt:"54.4kg",rep:"12次"}]},{name:"直杆绳索下压",sets:[{wt:"17.5kg",rep:"12次"},{wt:"17.5kg",rep:"10次"},{wt:"15kg",rep:"12次"},{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"10次"},{wt:"21.25kg",rep:"3次"}]},{name:"绳索臂屈伸（单）",sets:[{wt:"3.5kg",rep:"14次"},{wt:"3.5kg",rep:"12次"}]}]}]},
+  "2026-05-21": {cardio:[{type:"爬楼梯",kcal:236,time:1327,hr:150}],strength:null},
+  "2026-05-22": {cardio:null,strength:[{name:"背·二头·2",kcal:309,time:4780,exercises:[{name:"宽距高位下拉",sets:[{wt:"20kg",rep:"12次"},{wt:"25kg",rep:"8次"},{wt:"50kg",rep:"10次"},{wt:"50kg",rep:"10次"},{wt:"50kg",rep:"10次"},{wt:"50kg",rep:"6次"},{wt:"43kg",rep:"8次"}]},{name:"宽握反手下拉",sets:[{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"12次"},{wt:"43kg",rep:"10次"},{wt:"43kg",rep:"10次"}]},{name:"拉杆坐姿划船(窄握)",sets:[{wt:"36kg",rep:"8次"},{wt:"36kg",rep:"8次"},{wt:"36kg",rep:"8次"},{wt:"36kg",rep:"8次"}]},{name:"对握高位下拉",sets:[{wt:"38.8kg",rep:"12次"},{wt:"38.8kg",rep:"12次"},{wt:"38.8kg",rep:"9.5次"}]},{name:"坐姿划船",sets:[{wt:"29kg",rep:"8次"},{wt:"29kg",rep:"9.5次"},{wt:"29kg",rep:"8次"},{wt:"29kg",rep:"8次"}]},{name:"绳索直臂下压",sets:[{wt:"17.5kg",rep:"9次"},{wt:"17.5kg",rep:"9次"},{wt:"17.5kg",rep:"6次"}]},{name:"哑铃弯举",sets:[{wt:"15kg",rep:"4次"},{wt:"15kg",rep:"4次"},{wt:"15kg",rep:"4次"}]},{name:"牧师凳弯举",sets:[{wt:"15kg",rep:"10次"},{wt:"15kg",rep:"10次"}]},{name:"集中弯举",sets:[{wt:"15kg",rep:"3次"},{wt:"15kg",rep:"3次"},{wt:"15kg",rep:"3次"},{wt:"15kg",rep:"1次"}]}]}]},
+  "2026-05-23": {cardio:[{type:"室内骑行",kcal:328,time:1701,hr:147}],strength:null},
+  "2026-05-24": {cardio:null,strength:[{name:"臀·股四·腘绳",kcal:162,time:2653,exercises:[{name:"单腿哑铃硬拉",sets:[{wt:"17.5kg",rep:"12次"},{wt:"17.5kg",rep:"12次"}]},{name:"硬拉",sets:[{wt:"80kg",rep:"6次"},{wt:"80kg",rep:"6次"}]},{name:"哑铃保加利亚蹲",sets:[{wt:"30kg",rep:"8次"},{wt:"30kg",rep:"6次"},{wt:"25kg",rep:"6次"}]},{name:"哑铃酒杯深蹲",sets:[{wt:"15kg",rep:"15次"},{wt:"15kg",rep:"15次"},{wt:"15kg",rep:"10次"}]},{name:"深蹲",sets:[{wt:"60kg",rep:"2次"},{wt:"50kg",rep:"6次"},{wt:"50kg",rep:"6次"}]},{name:"山羊挺身",sets:[{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"8次"}]}]},{name:"肩·腹肌·2",kcal:391,time:6640,exercises:[{name:"蝴蝶机反向飞鸟",sets:[{wt:"34.5kg",rep:"12次"},{wt:"34.5kg",rep:"12次"},{wt:"34.5kg",rep:"12次"},{wt:"34.5kg",rep:"12次"}]},{name:"Y字绳索侧平举",sets:[{wt:"2.5kg",rep:"15次"},{wt:"2.5kg",rep:"12次"},{wt:"2.5kg",rep:"12次"},{wt:"2.5kg",rep:"12次"},{wt:"2.5kg",rep:"12次"},{wt:"2.5kg",rep:"12次"}]},{name:"侧平举",sets:[{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"10次"},{wt:"10kg",rep:"10次"},{wt:"15kg",rep:"3次"}]},{name:"绳索侧平举（单边）",sets:[{wt:"5kg",rep:"6次"},{wt:"5kg",rep:"5.5次"},{wt:"5kg",rep:"6次"},{wt:"5kg",rep:"4次"}]},{name:"杠铃直立划船",sets:[{wt:"35kg",rep:"12次"},{wt:"35kg",rep:"12次"},{wt:"35kg",rep:"12次"},{wt:"35kg",rep:"12次"}]},{name:"哑铃推肩",sets:[{wt:"22.5kg",rep:"12次"},{wt:"22.5kg",rep:"12次"},{wt:"20kg",rep:"6次"},{wt:"20kg",rep:"8次"}]},{name:"绳索跪姿卷腹",sets:[{wt:"32.5kg",rep:"12次"},{wt:"37.5kg",rep:"12次"},{wt:"37.5kg",rep:"12次"},{wt:"37.5kg",rep:"12次"},{wt:"37.5kg",rep:"12次"},{wt:"37.5kg",rep:"12次"}]}]}]},
+  "2026-05-25": {cardio:[{type:"室内骑行",kcal:261,time:1811,hr:123}],strength:null},
+  "2026-05-26": {cardio:null,strength:[{name:"胸·三头·2",kcal:235,time:3767,exercises:[{name:"杠铃卧推",sets:[{wt:"55kg",rep:"3.5次"},{wt:"55kg",rep:"2次"},{wt:"65kg",rep:"2次"},{wt:"65kg",rep:"1.5次"}]},{name:"哑铃卧推",sets:[{wt:"8kg",rep:"12次"},{wt:"15kg",rep:"6次"},{wt:"20kg",rep:"5次"},{wt:"25kg",rep:"8次"},{wt:"25kg",rep:"8次"},{wt:"22.5kg",rep:"4次"},{wt:"22.5kg",rep:"8次"}]},{name:"把手式蝴蝶机飞鸟",sets:[{wt:"55kg",rep:"12次"},{wt:"55kg",rep:"12次"},{wt:"55kg",rep:"12次"},{wt:"55kg",rep:"12次"}]},{name:"反手三头臂屈伸",sets:[{wt:"21.25kg",rep:"8次"},{wt:"21.25kg",rep:"7次"},{wt:"21.25kg",rep:"7次"}]},{name:"绳索臂屈伸（单）",sets:[{wt:"8.5kg",rep:"4次"},{wt:"8.5kg",rep:"5次"},{wt:"8.5kg",rep:"6次"},{wt:"8.5kg",rep:"6.5次"}]},{name:"坐姿哑铃三头肌伸展",sets:[{wt:"15kg",rep:"10次"},{wt:"20kg",rep:"4次"},{wt:"20kg",rep:"8次"}]}]}]},
+};
 
 // ═══ localStorage 持久化 ═══
 const STORAGE_KEY_SLEEP = 'pmu_sleep_data_v2';
@@ -420,7 +448,7 @@ function secToHMS(s) {
   return h>0?h+":"+String(m).padStart(2,'0')+":"+String(sec).padStart(2,'0'):m+":"+String(sec).padStart(2,'0');
 }
 function sleepDuration(bed, wake) {
-  if (!bed || !wake) return '—';
+  if (!bed || !wake) return '\u2014';
   const [bh,bm] = bed.split(':').map(Number);
   const [wh,wm] = wake.split(':').map(Number);
   let mins = (wh*60+wm) - (bh*60+bm);
@@ -446,17 +474,15 @@ function drawPieChart(svgId, legendId, totalLabelId, awake, rem, light, deep) {
   ];
   const total = awake + rem + light + deep;
 
-  // 更新总时长
   const totalEl = document.getElementById(totalLabelId);
-  if (totalEl) totalEl.textContent = '总睡眠时长：' + minsToHM(total);
+  if (totalEl) totalEl.textContent = '\u603B\u7761\u7720\u65F6\u957F\uFF1A' + minsToHM(total);
 
-  // SVG
   const svg = document.getElementById(svgId);
   const cx=70, cy=70, r=60;
   let svgInner = '';
 
   if (total === 0) {
-    svgInner = '<circle cx="70" cy="70" r="60" fill="#333"/><text x="70" y="74" text-anchor="middle" fill="#666" font-size="13">无数据</text>';
+    svgInner = '<circle cx="70" cy="70" r="60" fill="#333"/><text x="70" y="74" text-anchor="middle" fill="#666" font-size="13">\u65E0\u6570\u636E</text>';
   } else {
     let cumulative = -Math.PI/2;
     stages.forEach(s => {
@@ -470,14 +496,12 @@ function drawPieChart(svgId, legendId, totalLabelId, awake, rem, light, deep) {
       svgInner += '<path d="M'+cx+','+cy+' L'+x1+','+y1+' A'+r+','+r+' 0 '+largeArc+',1 '+x2+','+y2+' Z" fill="'+s.color+'"/>';
       cumulative += slice;
     });
-    // 中间白圆（甜甜圈效果）
     svgInner += '<circle cx="70" cy="70" r="32" fill="#222"/>';
     svgInner += '<text x="70" y="67" text-anchor="middle" fill="#ccc" font-size="16" font-weight="700">'+minsToHM(total)+'</text>';
-    svgInner += '<text x="70" y="83" text-anchor="middle" fill="#888" font-size="10">总时长</text>';
+    svgInner += '<text x="70" y="83" text-anchor="middle" fill="#888" font-size="10">\u603B\u65F6\u957F</text>';
   }
   svg.innerHTML = svgInner;
 
-  // 图例
   const legendEl = document.getElementById(legendId);
   let legendHTML = '';
   stages.forEach(s => {
@@ -485,13 +509,13 @@ function drawPieChart(svgId, legendId, totalLabelId, awake, rem, light, deep) {
     const pct = total > 0 ? Math.round(s.val/total*100) : 0;
     legendHTML += '<div class="legend-item legend-'+s.key+'"><div class="legend-dot"></div><span>'+s.label+'</span><span class="legend-val">'+minsToHM(s.val)+' ('+pct+'%)</span></div>';
   });
-  legendEl.innerHTML = legendHTML || '<span style="color:#555;">暂无数据</span>';
+  legendEl.innerHTML = legendHTML || '<span style="color:#555;">\u6682\u65E0\u6570\u636E</span>';
 }
 
 // ═══ 状态 ═══
 const today = new Date();
 const todayStr = fmtDate(today);
-const allDates = Object.keys(TRAINING_DATA).sort();
+const allDates = ["2026-04-01", "2026-04-02", "2026-04-04", "2026-04-05", "2026-04-06", "2026-04-18", "2026-04-19", "2026-04-20", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-25", "2026-04-26", "2026-04-27", "2026-04-29", "2026-04-30", "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-08", "2026-05-09", "2026-05-10", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-16", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-23", "2026-05-24", "2026-05-25", "2026-05-26"];
 const firstDataDate = allDates[0] || todayStr;
 const lastDataDate = allDates[allDates.length-1] || todayStr;
 let viewMonday = new Date(getMonday(today));
@@ -505,7 +529,7 @@ function render() {
   const days = getWeekDays(monday);
 
   document.getElementById("weekSub").textContent = 
-    (isCurrentWeek ? "本周 " : "") + fmtMD(monday) + " - " + fmtMD(sunday);
+    (isCurrentWeek ? "\u672C\u5468 " : "") + fmtMD(monday) + " - " + fmtMD(sunday);
   document.getElementById("weekLabel").textContent = fmtMD(monday) + " - " + fmtMD(sunday);
 
   const prevMonday = new Date(monday); prevMonday.setDate(prevMonday.getDate()-7);
@@ -525,11 +549,11 @@ function render() {
   });
 
   document.getElementById("statsRow").innerHTML = `
-    <div class="stat"><div class="stat-label">训练天数</div><div class="stat-value val-orange">${trainDays}<span class="stat-unit">/${displayDays}天</span></div></div>
-    <div class="stat"><div class="stat-label">有氧消耗</div><div class="stat-value val-green">${cardioKcal}<span class="stat-unit">kcal</span></div></div>
-    <div class="stat"><div class="stat-label">力量消耗</div><div class="stat-value val-red">${strengthKcal}<span class="stat-unit">kcal</span></div></div>
-    <div class="stat"><div class="stat-label">总时长</div><div class="stat-value val-orange">${Math.round(totalTime/60)}<span class="stat-unit">分钟</span></div></div>
-    <div class="stat"><div class="stat-label">总消耗</div><div class="stat-value val-orange">${cardioKcal+strengthKcal}<span class="stat-unit">kcal</span></div></div>`;
+    <div class="stat"><div class="stat-label">\u8BAD\u7EC3\u5929\u6570</div><div class="stat-value val-orange">${trainDays}<span class="stat-unit">/${displayDays}\u5929</span></div></div>
+    <div class="stat"><div class="stat-label">\u6709\u6C27\u6D88\u8017</div><div class="stat-value val-green">${cardioKcal}<span class="stat-unit">kcal</span></div></div>
+    <div class="stat"><div class="stat-label">\u529B\u91CF\u6D88\u8017</div><div class="stat-value val-red">${strengthKcal}<span class="stat-unit">kcal</span></div></div>
+    <div class="stat"><div class="stat-label">\u603B\u65F6\u957F</div><div class="stat-value val-orange">${Math.round(totalTime/60)}<span class="stat-unit">\u5206\u949F</span></div></div>
+    <div class="stat"><div class="stat-label">\u603B\u6D88\u8017</div><div class="stat-value val-orange">${cardioKcal+strengthKcal}<span class="stat-unit">kcal</span></div></div>`;
 
   let gridHTML = '';
   days.forEach(d => {
@@ -546,19 +570,19 @@ function render() {
     else cls += ' empty';
 
     let tags='', detail='';
-    if (hasCardio) { tags += '<span class="day-tag tag-cardio">有氧</span>'; }
-    if (hasStrength) { tags += '<span class="day-tag tag-strength">力量×'+data.strength.length+'</span>'; }
+    if (hasCardio) { tags += '<span class="day-tag tag-cardio">\u6709\u6C27</span>'; }
+    if (hasStrength) { tags += '<span class="day-tag tag-strength">\u529B\u91CF\u00D7'+data.strength.length+'</span>'; }
     if (!hasCardio && !hasStrength) {
-      detail = isToday ? '今天' : (d > today ? '' : '休息');
+      detail = isToday ? '\u4ECA\u5929' : (d > today ? '' : '\u4F11\u606F');
     }
     if (hasCardio && data.cardio[0]) {
-      detail += '🚴 '+secToHMS(data.cardio[0].time)+' · '+data.cardio[0].kcal+'kcal';
-      if (data.cardio[0].dist) detail += ' · '+data.cardio[0].dist+'km';
+      detail += '🚴 '+secToHMS(data.cardio[0].time)+' \u00B7 '+data.cardio[0].kcal+'kcal';
+      if (data.cardio[0].dist) detail += ' \u00B7 '+data.cardio[0].dist+'km';
     }
     if (hasStrength) {
       const totalStrKcal = data.strength.reduce((a,s)=>a+(s.kcal||0),0);
       const totalStrTime = data.strength.reduce((a,s)=>a+(s.time||0),0);
-      detail += (detail?'<br>':'')+'💪 '+secToHMS(totalStrTime)+' · '+totalStrKcal+'kcal';
+      detail += (detail?'<br>':'')+'💪 '+secToHMS(totalStrTime)+' \u00B7 '+totalStrKcal+'kcal';
     }
     gridHTML += '<div class="'+cls+'"><div class="day-name">'+WEEKDAYS[d.getDay()===0?6:d.getDay()-1]+'</div><div class="day-date">'+fmtMD(d)+'</div>'+tags+'<div class="day-detail">'+detail+'</div></div>';
   });
@@ -574,19 +598,19 @@ function render() {
     const wd = WEEKDAYS[d.getDay()===0?6:d.getDay()-1];
     
     if (data.cardio) data.cardio.forEach(c => {
-      const icon = c.type.includes('骑行')?'🚴':c.type.includes('跑')?'🏃':c.type.includes('爬')?'🪜':'🏋️';
-      detailHTML += '<div class="detail-card cardio-border"><h2>'+icon+' '+fmtMD(d)+' '+wd+' · '+c.type+'</h2>'
+      const icon = c.type.includes('\u9A91\u884C')?'🚴':c.type.includes('\u8DD1')?'🏃':c.type.includes('\u722C')?'🦜':'🏋️';
+      detailHTML += '<div class="detail-card cardio-border"><h2>'+icon+' '+fmtMD(d)+' '+wd+' \u00B7 '+c.type+'</h2>'
         +'<div class="stat-row">'
-        +'<div class="stat"><div class="stat-label">时长</div><div class="stat-value val-green">'+secToHMS(c.time)+'</div></div>'
-        +'<div class="stat"><div class="stat-label">消耗</div><div class="stat-value val-green">'+c.kcal+'<span class="stat-unit">kcal</span></div></div>'
-        +(c.hr?'<div class="stat"><div class="stat-label">心率</div><div class="stat-value val-green">'+c.hr+'<span class="stat-unit">bpm</span></div></div>':'')
-        +(c.dist?'<div class="stat"><div class="stat-label">距离</div><div class="stat-value val-green">'+c.dist+'<span class="stat-unit">km</span></div></div>':'')
+        +'<div class="stat"><div class="stat-label">\u65F6\u957F</div><div class="stat-value val-green">'+secToHMS(c.time)+'</div></div>'
+        +'<div class="stat"><div class="stat-label">\u6D88\u8017</div><div class="stat-value val-green">'+c.kcal+'<span class="stat-unit">kcal</span></div></div>'
+        +(c.hr?'<div class="stat"><div class="stat-label">\u5FC3\u7387</div><div class="stat-value val-green">'+c.hr+'<span class="stat-unit">bpm</span></div></div>':'')
+        +(c.dist?'<div class="stat"><div class="stat-label">\u8DDD\u79BB</div><div class="stat-value val-green">'+c.dist+'<span class="stat-unit">km</span></div></div>':'')
         +'</div></div>';
     });
     
     if (data.strength) data.strength.forEach((s, si) => {
-      detailHTML += '<div class="detail-card strength-border"><h2>💪 '+fmtMD(d)+' '+wd+' · '+s.name+'</h2>'
-        +'<p style="color:#888;font-size:13px;margin-bottom:16px;">总时长 '+secToHMS(s.time)+' · 消耗 '+s.kcal+'kcal</p>';
+      detailHTML += '<div class="detail-card strength-border"><h2>💪 '+fmtMD(d)+' '+wd+' \u00B7 '+s.name+'</h2>'
+        +'<p style="color:#888;font-size:13px;margin-bottom:16px;">\u603B\u65F6\u957F '+secToHMS(s.time)+' \u00B7 \u6D88\u8017 '+s.kcal+'kcal</p>';
       s.exercises.forEach((ex,i) => {
         detailHTML += '<div class="exercise-card"><div class="ex-name">'+(i+1)+'. '+ex.name+'</div><div class="sets-grid">';
         ex.sets.forEach(set => {
@@ -597,35 +621,34 @@ function render() {
       detailHTML += '</div>';
     });
   });
-  document.getElementById("detailSection").innerHTML = detailHTML || '<div class="card empty-state"><p>本周暂无训练记录</p></div>';
+  document.getElementById("detailSection").innerHTML = detailHTML || '<div class="card empty-state"><p>\u672C\u5468\u6682\u65E0\u8BAD\u7EC3\u8BB0\u5F55</p></div>';
 
   let analysis = '';
   if (isCurrentWeek) {
-    const plan = ["力量日","有氧日","力量日","有氧日","力量日","有氧日","休息"];
-    analysis = '<strong>📋 本周计划对照（一三五力量 / 二四六有氧）：</strong><br>';
+    const plan = ["\u529B\u91CF\u65E5","\u6709\u6C27\u65E5","\u529B\u91CF\u65E5","\u6709\u6C27\u65E5","\u529B\u91CF\u65E5","\u6709\u6C27\u65E5","\u4F11\u606F"];
+    analysis = '<strong>📋 \u672C\u5468\u8BA1\u5212\u5BF9\u7167\uFF08\u4E00\u4E09\u4E94\u529B\u91CF / \u4E8C\u56DB\u516D\u6709\u6C27\uFF09\uFF1A</strong><br>';
     days.forEach((d,i) => {
-      if (d > today) { analysis += '⬜ '+fmtMD(d)+' '+WEEKDAYS[i]+'：'+plan[i]+'<br>'; return; }
+      if (d > today) { analysis += '\u2B1C '+fmtMD(d)+' '+WEEKDAYS[i]+'\uFF1A'+plan[i]+'<br>'; return; }
       const k = fmtDate(d);
       const data = TRAINING_DATA[k];
       const hasCardio = data?.cardio?.length;
       const hasStrength = data?.strength?.length;
-      const actual = hasCardio && hasStrength ? 'both' : hasCardio ? '有氧' : hasStrength ? '力量('+data.strength.length+'场)' : '未练';
-      const icon = actual==='未练'?'❌':(plan[i].includes('力量')&&actual.startsWith('有氧')||plan[i].includes('有氧')&&actual.startsWith('力量'))?'🔄':'✅';
-      analysis += icon+' '+fmtMD(d)+' '+WEEKDAYS[i]+'：'+actual+(actual==='未练'?'（缺）':'')+'<br>';
+      const actual = hasCardio && hasStrength ? 'both' : hasCardio ? '\u6709\u6C27' : hasStrength ? '\u529B\u91CF('+data.strength.length+'\u573A)' : '\u672A\u7EC3';
+      const icon = actual==='\u672A\u7EC3'?'\u274C':(plan[i].includes('\u529B\u91CF')&&actual.startsWith('\u6709\u6C27')||plan[i].includes('\u6709\u6C27')&&actual.startsWith('\u529B\u91CF'))?'🔄':'\u2705';
+      analysis += icon+' '+fmtMD(d)+' '+WEEKDAYS[i]+'\uFF1A'+actual+(actual==='\u672A\u7EC3'?'\uFF08\u7F3A\uFF09':'')+'<br>';
     });
-    analysis += '<br><strong>💡 提示：</strong><br>'
-      +'· 全量数据范围: '+firstDataDate+' → '+lastDataDate+'<br>'
-      +'· 绿点管理睡眠记录 · 黄点管理饮食记录<br>'
-      +'· 每日自动由 GitHub Actions 更新';
+    analysis += '<br><strong>💡 \u63D0\u793A\uFF1A</strong><br>'
+      +'\u00B7 \u5168\u91CF\u6570\u636E\u8303\u56F4: '+firstDataDate+' \u2192 '+lastDataDate+'<br>'
+      +'\u00B7 \u7EFF\u70B9\u7BA1\u7406\u7761\u7720\u8BB0\u5F55 \u00B7 \u9EC4\u70B9\u7BA1\u7406\u996E\u98DF\u8BB0\u5F55<br>'
+      +'\u00B7 \u6BCF\u65E5\u81EA\u52A8\u7531 GitHub Actions \u66F4\u65B0';
   } else {
-    analysis = '<strong>📊 历史周回顾</strong><br>'
-      +'· 这是 '+fmtMD(monday)+' 到 '+fmtMD(sunday)+' 的训练数据<br>'
-      +'· 使用 ◂ ▸ 箭头回到本周';
+    analysis = '<strong>📊 \u5386\u53F2\u5468\u56DE\u987E</strong><br>'
+      +'\u00B7 \u8FD9\u662F '+fmtMD(monday)+' \u5230 '+fmtMD(sunday)+' \u7684\u8BAD\u7EC3\u6570\u636E<br>'
+      +'\u00B7 \u4F7F\u7528 \u25C2 \u25B8 \u7BAD\u5934\u56DE\u5230\u672C\u5468';
   }
   document.getElementById("analysisBox").innerHTML = analysis;
 }
 
-// ═══ 三栏面板渲染 ═══
 function renderTriplePanels(days) {
   let trainHTML = '', sleepHTML = '', dietHTML = '';
 
@@ -635,27 +658,24 @@ function renderTriplePanels(days) {
     const dateLabel = fmtMD(d) + ' ' + wd;
     const data = TRAINING_DATA[k];
 
-    // 训练栏
     if (data && (data.cardio?.length || data.strength?.length)) {
       trainHTML += '<div class="panel-card train-panel"><div class="panel-date">'+dateLabel+'</div>';
       if (data.cardio) data.cardio.forEach(c => {
-        trainHTML += '🚴 '+c.type+' · '+secToHMS(c.time)+' · '+c.kcal+'kcal<br>';
+        trainHTML += '🚴 '+c.type+' \u00B7 '+secToHMS(c.time)+' \u00B7 '+c.kcal+'kcal<br>';
       });
       if (data.strength) data.strength.forEach(s => {
-        trainHTML += '💪 '+s.name+' · '+secToHMS(s.time)+' · '+s.kcal+'kcal<br>';
+        trainHTML += '💪 '+s.name+' \u00B7 '+secToHMS(s.time)+' \u00B7 '+s.kcal+'kcal<br>';
       });
       trainHTML += '</div>';
     } else {
-      trainHTML += '<div class="panel-card train-panel"><div class="panel-date">'+dateLabel+'</div><span style="color:#555;">休息</span></div>';
+      trainHTML += '<div class="panel-card train-panel"><div class="panel-date">'+dateLabel+'</div><span style="color:#555;">\u4F11\u606F</span></div>';
     }
 
-    // 睡眠栏
     const slp = SLEEP_DATA[k];
     if (slp && slp.bedTime && slp.wakeTime) {
       const dur = sleepDuration(slp.bedTime, slp.wakeTime);
       const awake = slp.awake || 0, rem = slp.rem || 0, light = slp.light || 0, deep = slp.deep || 0;
       const stageTotal = awake + rem + light + deep;
-      // 阶段小条
       let stageBar = '';
       if (stageTotal > 0) {
         const pcts = [awake/stageTotal, rem/stageTotal, light/stageTotal, deep/stageTotal];
@@ -666,40 +686,38 @@ function renderTriplePanels(days) {
       }
       sleepHTML += '<div class="panel-card sleep-panel"><div class="panel-date">'+dateLabel+'</div>'
         +'<div class="sleep-info">'
-        +'<div class="sleep-block"><div class="sleep-val">'+slp.bedTime+'</div><div class="sleep-lbl">入睡</div></div>'
-        +'<div class="sleep-divider">→</div>'
-        +'<div class="sleep-block"><div class="sleep-val">'+slp.wakeTime+'</div><div class="sleep-lbl">起床</div></div>'
+        +'<div class="sleep-block"><div class="sleep-val">'+slp.bedTime+'</div><div class="sleep-lbl">\u5165\u7761</div></div>'
+        +'<div class="sleep-divider">\u2192</div>'
+        +'<div class="sleep-block"><div class="sleep-val">'+slp.wakeTime+'</div><div class="sleep-lbl">\u8D77\u5E8A</div></div>'
         +'</div>'
         +'<div style="margin-top:4px;"><span class="sleep-duration">'+dur+'</span>'
-        +(stageTotal>0?' · 深睡'+minsToHM(deep):'')
+        +(stageTotal>0?' \u00B7 \u6DF1\u7761'+minsToHM(deep):'')
         +'</div>'
         +stageBar
         +'</div>';
     } else {
-      sleepHTML += '<div class="panel-card sleep-panel"><div class="panel-date">'+dateLabel+'</div><span style="color:#555;">无记录</span></div>';
+      sleepHTML += '<div class="panel-card sleep-panel"><div class="panel-date">'+dateLabel+'</div><span style="color:#555;">\u65E0\u8BB0\u5F55</span></div>';
     }
 
-    // 饮食栏
     const diet = DIET_DATA[k];
     if (diet && diet.meals && diet.meals.length > 0) {
       dietHTML += '<div class="panel-card diet-panel"><div class="panel-date">'+dateLabel+'</div>';
-      dietHTML += '<span style="color:#ff6b35;font-weight:600;">'+diet.totalKcal+' kcal</span> · ';
-      dietHTML += '<span style="color:#ce93d8;">蛋白'+diet.protein+'g</span> · ';
-      dietHTML += '<span style="color:#fff176;">脂肪'+diet.fat+'g</span> · ';
-      dietHTML += '<span style="color:#80cbc4;">碳水'+diet.carb+'g</span>';
-      dietHTML += '<div style="font-size:11px;color:#666;margin-top:4px;">'+diet.meals.length+'餐</div>';
+      dietHTML += '<span style="color:#ff6b35;font-weight:600;">'+diet.totalKcal+' kcal</span> \u00B7 ';
+      dietHTML += '<span style="color:#ce93d8;">\u86CB\u767D'+diet.protein+'g</span> \u00B7 ';
+      dietHTML += '<span style="color:#fff176;">\u8102\u80AA'+diet.fat+'g</span> \u00B7 ';
+      dietHTML += '<span style="color:#80cbc4;">\u78B3\u6C34'+diet.carb+'g</span>';
+      dietHTML += '<div style="font-size:11px;color:#666;margin-top:4px;">'+diet.meals.length+'\u9910</div>';
       dietHTML += '</div>';
     } else {
-      dietHTML += '<div class="panel-card diet-panel"><div class="panel-date">'+dateLabel+'</div><span style="color:#555;">无记录</span></div>';
+      dietHTML += '<div class="panel-card diet-panel"><div class="panel-date">'+dateLabel+'</div><span style="color:#555;">\u65E0\u8BB0\u5F55</span></div>';
     }
   });
 
-  document.getElementById("trainCol").innerHTML = trainHTML || '<div class="empty-state" style="padding:20px;"><p>暂无数据</p></div>';
-  document.getElementById("sleepCol").innerHTML = sleepHTML || '<div class="empty-state" style="padding:20px;"><p>暂无数据</p></div>';
-  document.getElementById("dietCol").innerHTML = dietHTML || '<div class="empty-state" style="padding:20px;"><p>暂无数据</p></div>';
+  document.getElementById("trainCol").innerHTML = trainHTML || '<div class="empty-state" style="padding:20px;"><p>\u6682\u65E0\u6570\u636E</p></div>';
+  document.getElementById("sleepCol").innerHTML = sleepHTML || '<div class="empty-state" style="padding:20px;"><p>\u6682\u65E0\u6570\u636E</p></div>';
+  document.getElementById("dietCol").innerHTML = dietHTML || '<div class="empty-state" style="padding:20px;"><p>\u6682\u65E0\u6570\u636E</p></div>';
 }
 
-// ═══ 周切换 ═══
 function prevWeek() { viewMonday.setDate(viewMonday.getDate()-7); render(); }
 function nextWeek() {
   const next = new Date(viewMonday);
@@ -707,7 +725,6 @@ function nextWeek() {
   if (next <= getMonday(today)) { viewMonday = next; render(); }
 }
 
-// ═══ 红圆点 ═══
 function hideCards() {
   document.getElementById("overviewCard").classList.add("collapsed");
   document.getElementById("weekViewCard").classList.add("collapsed");
@@ -778,12 +795,11 @@ function verifySleepPwd() {
     document.getElementById("sleepPwdBox").style.display = 'none';
     showSleepEditor();
   } else {
-    document.getElementById("sleepPwdErr").textContent = '密码错误';
+    document.getElementById("sleepPwdErr").textContent = '\u5BC6\u7801\u9519\u8BEF';
   }
 }
 function showSleepEditor() {
   document.getElementById("sleepEditForm").classList.add("show");
-  // 设置日历默认值
   const dp = document.getElementById("sleepDatePicker");
   dp.value = editingSleepDate || todayStr;
   renderSleepRecords();
@@ -805,22 +821,22 @@ function renderSleepRecords() {
     html += '<div class="sleep-record-card">'
       +'<div class="sr-info">'
       +'<div class="sr-date">'+dateKey+'</div>'
-      +'<div class="sr-detail">入睡 '+s.bedTime+' → 起床 '+s.wakeTime+' · '+sleepDuration(s.bedTime,s.wakeTime)+'</div>'
+      +'<div class="sr-detail">\u5165\u7761 '+s.bedTime+' \u2192 \u8D77\u5E8A '+s.wakeTime+' \u00B7 '+sleepDuration(s.bedTime,s.wakeTime)+'</div>'
       +'<div class="sr-stages">'
-      +(awake?'<span class="stage-tag-awake">清醒 '+minsToHM(awake)+'</span>':'')
+      +(awake?'<span class="stage-tag-awake">\u6E05\u9192 '+minsToHM(awake)+'</span>':'')
       +(rem?'<span class="stage-tag-rem">REM '+minsToHM(rem)+'</span>':'')
-      +(light?'<span class="stage-tag-light">浅睡 '+minsToHM(light)+'</span>':'')
-      +(deep?'<span class="stage-tag-deep">深睡 '+minsToHM(deep)+'</span>':'')
+      +(light?'<span class="stage-tag-light">\u6D45\u7761 '+minsToHM(light)+'</span>':'')
+      +(deep?'<span class="stage-tag-deep">\u6DF1\u7761 '+minsToHM(deep)+'</span>':'')
       +'</div>'
       +(s.note?'<div style="font-size:11px;color:#666;margin-top:2px;">'+s.note+'</div>':'')
       +'</div>'
       +'<div class="sr-actions">'
-      +'<button class="sr-edit" onclick="editSleep(\''+dateKey+'\')">编辑</button>'
-      +'<button class="sr-del" onclick="deleteSleep(\''+dateKey+'\')">删除</button>'
+      +'<button class="sr-edit" onclick="editSleep(\''+dateKey+'\')">\u7F16\u8F91</button>'
+      +'<button class="sr-del" onclick="deleteSleep(\''+dateKey+'\')">\u5220\u9664</button>'
       +'</div></div>';
     document.getElementById("btnAddSleep").style.display = 'none';
   } else {
-    html = '<div class="empty-state" style="padding:24px;"><p>'+dateKey+' 暂无睡眠记录</p></div>';
+    html = '<div class="empty-state" style="padding:24px;"><p>'+dateKey+' \u6682\u65E0\u7761\u7720\u8BB0\u5F55</p></div>';
     document.getElementById("btnAddSleep").style.display = 'block';
   }
   document.getElementById("sleepRecordsList").innerHTML = html;
@@ -831,7 +847,6 @@ function showSleepAddForm(dateOverride) {
   document.getElementById("sleepDatePicker").value = editingSleepDate;
   document.getElementById("sleepAddForm").style.display = 'block';
   document.getElementById("btnAddSleep").style.display = 'none';
-  // 清空
   document.getElementById("sBedTime").value = '';
   document.getElementById("sWakeTime").value = '';
   document.getElementById("sAwake").value = '';
@@ -876,7 +891,7 @@ function saveSleepRecord() {
   const light = parseInt(document.getElementById("sLight").value) || 0;
   const deep = parseInt(document.getElementById("sDeep").value) || 0;
   const note = document.getElementById("sNote").value;
-  if (!bedTime || !wakeTime) { alert('请填写入睡和起床时间'); return; }
+  if (!bedTime || !wakeTime) { alert('\u8BF7\u586B\u5199\u5165\u7761\u548C\u8D77\u5E8A\u65F6\u95F4'); return; }
   SLEEP_DATA[dateKey] = { bedTime, wakeTime, awake, rem, light, deep, note };
   saveSleepData();
   cancelSleepAdd();
@@ -885,7 +900,7 @@ function saveSleepRecord() {
 }
 function editSleep(dateKey) { showSleepAddForm(dateKey); }
 function deleteSleep(dateKey) {
-  if (confirm('删除 '+dateKey+' 的睡眠记录？')) {
+  if (confirm('\u5220\u9664 '+dateKey+' \u7684\u7761\u7720\u8BB0\u5F55\uFF1F')) {
     delete SLEEP_DATA[dateKey];
     saveSleepData();
     renderSleepRecords();
@@ -954,12 +969,11 @@ function verifyDietPwd() {
     document.getElementById("dietPwdBox").style.display = 'none';
     showDietEditor();
   } else {
-    document.getElementById("dietPwdErr").textContent = '密码错误';
+    document.getElementById("dietPwdErr").textContent = '\u5BC6\u7801\u9519\u8BEF';
   }
 }
 function showDietEditor() {
   document.getElementById("dietEditForm").classList.add("show");
-  // 设置日历默认值
   document.getElementById("dietDatePicker").value = editingDietDate || todayStr;
   renderDietContent();
 }
@@ -977,13 +991,13 @@ function renderDietContent() {
   let summaryHTML = '';
   if (data && data.meals && data.meals.length > 0) {
     summaryHTML += '<div class="diet-summary">'
-      +'<div class="diet-stat"><div class="label">总摄入</div><div class="value" style="color:#ff6b35">'+(data.totalKcal||0)+'<span style="font-size:12px;color:#888"> kcal</span></div></div>'
-      +'<div class="diet-stat"><div class="label">蛋白质</div><div class="value" style="color:#ce93d8">'+(data.protein||0)+'<span style="font-size:12px;color:#888"> g</span></div></div>'
-      +'<div class="diet-stat"><div class="label">脂肪</div><div class="value" style="color:#fff176">'+(data.fat||0)+'<span style="font-size:12px;color:#888"> g</span></div></div>'
-      +'<div class="diet-stat"><div class="label">碳水</div><div class="value" style="color:#80cbc4">'+(data.carb||0)+'<span style="font-size:12px;color:#888"> g</span></div></div>'
+      +'<div class="diet-stat"><div class="label">\u603B\u6444\u5165</div><div class="value" style="color:#ff6b35">'+(data.totalKcal||0)+'<span style="font-size:12px;color:#888"> kcal</span></div></div>'
+      +'<div class="diet-stat"><div class="label">\u86CB\u767D\u8D28</div><div class="value" style="color:#ce93d8">'+(data.protein||0)+'<span style="font-size:12px;color:#888"> g</span></div></div>'
+      +'<div class="diet-stat"><div class="label">\u8102\u80AA</div><div class="value" style="color:#fff176">'+(data.fat||0)+'<span style="font-size:12px;color:#888"> g</span></div></div>'
+      +'<div class="diet-stat"><div class="label">\u78B3\u6C34</div><div class="value" style="color:#80cbc4">'+(data.carb||0)+'<span style="font-size:12px;color:#888"> g</span></div></div>'
       +'</div>';
   } else {
-    summaryHTML = '<div class="empty-state" style="padding:16px;"><p>'+dateKey+' 暂无饮食记录</p></div>';
+    summaryHTML = '<div class="empty-state" style="padding:16px;"><p>'+dateKey+' \u6682\u65E0\u996E\u98DF\u8BB0\u5F55</p></div>';
   }
   document.getElementById("dietDaySummary").innerHTML = summaryHTML;
 
@@ -991,10 +1005,10 @@ function renderDietContent() {
   if (data && data.meals) {
     data.meals.forEach((m,i) => {
       mealsHTML += '<div class="meal-card">'
-        +'<button class="del-meal" onclick="deleteDietMeal('+i+')" title="删除此餐">✕</button>'
+        +'<button class="del-meal" onclick="deleteDietMeal('+i+')" title="\u5220\u9664\u6B64\u9910">\u2715</button>'
         +'<div class="meal-header"><span class="meal-name">'+m.name+'</span><span class="meal-kcal">'+m.kcal+' kcal</span></div>'
-        +'<div class="meal-items">'+(m.items||[]).join('、')+'</div>'
-        +'<div class="macro-row">'+(m.protein?'<span class="macro-tag macro-protein">蛋白 '+m.protein+'g</span>':'')+(m.fat?'<span class="macro-tag macro-fat">脂肪 '+m.fat+'g</span>':'')+(m.carb?'<span class="macro-tag macro-carb">碳水 '+m.carb+'g</span>':'')+'</div></div>';
+        +'<div class="meal-items">'+(m.items||[]).join('\u3001')+'</div>'
+        +'<div class="macro-row">'+(m.protein?'<span class="macro-tag macro-protein">\u86CB\u767D '+m.protein+'g</span>':'')+(m.fat?'<span class="macro-tag macro-fat">\u8102\u80AA '+m.fat+'g</span>':'')+(m.carb?'<span class="macro-tag macro-carb">\u78B3\u6C34 '+m.carb+'g</span>':'')+'</div></div>';
     });
   }
   document.getElementById("dietMealsList").innerHTML = mealsHTML;
@@ -1023,8 +1037,8 @@ function saveDietMeal() {
   const protein = parseFloat(document.getElementById("dProtein").value) || 0;
   const fat = parseFloat(document.getElementById("dFat").value) || 0;
   const carb = parseFloat(document.getElementById("dCarb").value) || 0;
-  if (!name) { alert('请填写餐次名称'); return; }
-  const items = itemsStr ? itemsStr.split(/[,，]/).map(s=>s.trim()).filter(Boolean) : [];
+  if (!name) { alert('\u8BF7\u586B\u5199\u9910\u6B21\u540D\u79F0'); return; }
+  const items = itemsStr ? itemsStr.split(/[,,\uFF0C]/).map(s=>s.trim()).filter(Boolean) : [];
   const meal = { name, items, kcal, protein, fat, carb };
 
   if (!DIET_DATA[dateKey]) DIET_DATA[dateKey] = { meals: [], totalKcal: 0, protein: 0, fat: 0, carb: 0 };
@@ -1038,7 +1052,7 @@ function saveDietMeal() {
 function deleteDietMeal(idx) {
   const dateKey = editingDietDate || document.getElementById("dietDatePicker").value || todayStr;
   if (!DIET_DATA[dateKey]) return;
-  if (confirm('删除这一餐？')) {
+  if (confirm('\u5220\u9664\u8FD9\u4E00\u9910\uFF1F')) {
     DIET_DATA[dateKey].meals.splice(idx, 1);
     recalcDietTotals(dateKey);
     saveDietData();
@@ -1069,7 +1083,8 @@ render();
 </script>
 
 <p style="color:#555;font-size:12px;margin-top:16px;text-align:center;">
-  数据来自训记 API · 绿点管理睡眠 · 黄点管理饮食 · 由 GitHub Actions 每日自动更新
+  数据来自训记 API · 绿点管理睡眠 · 黄点管理饮食 · 由 GitHub Actions 每日自动更新<br>
+  数据范围: 2026-04-01 → 2026-05-26
 </p>
 </body>
 </html>
