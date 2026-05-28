@@ -19,7 +19,7 @@ h1 { font-size:24px; margin-bottom:4px; }
 }
 .floating-red.show { opacity:1; transform:scale(1); pointer-events:auto; }
 .floating-red:hover { transform:scale(1.2); box-shadow: 0 0 24px rgba(255,95,87,.6); }
-.floating-red::after { content:'\01F534'; font-size:14px; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+.floating-red::after { content:'🔴'; font-size:14px; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
 
 .card { background:#1a1a1a; border-radius:12px; padding:20px; margin-bottom:16px; border:1px solid #2a2a2a; position:relative; transition: opacity .5s, transform .5s, max-height .5s, padding .5s, margin .5s; overflow:hidden; }
 .card.collapsed { opacity:0; transform:translateY(-20px); max-height:0; padding-top:0; padding-bottom:0; margin-bottom:0; border-width:0; }
@@ -210,14 +210,14 @@ h1 { font-size:24px; margin-bottom:4px; }
 </head>
 <body>
 
-<h1>\01F3CB\0FE0F 训记训练数据</h1>
+<h1>🏋️ 训记训练数据</h1>
 <p class="sub" id="weekSub"></p>
 
 <button class="floating-red" id="floatingRed" onclick="restoreCards()" title="恢复面板"></button>
 
 <div class="card" id="overviewCard">
   <div class="card-header">
-    <h2>\01F4CA 本周概览</h2>
+    <h2>📊 本周概览</h2>
     <div class="header-right">
       <div class="week-nav">
         <button onclick="prevWeek()" id="btnPrev" title="上一周">\025C2</button>
@@ -235,21 +235,21 @@ h1 { font-size:24px; margin-bottom:4px; }
 </div>
 
 <div class="card" id="weekViewCard">
-  <div class="card-header"><h2>\01F4C5 周视图</h2></div>
+  <div class="card-header"><h2>📅 周视图</h2></div>
   <div class="week-grid" id="weekGrid"></div>
 </div>
 
 <div class="triple-panel" id="triplePanel">
   <div class="triple-col train-col">
-    <h3>\01F3CB\0FE0F 训练记录</h3>
+    <h3>🏋️ 训练记录</h3>
     <div id="trainCol"></div>
   </div>
   <div class="triple-col sleep-col">
-    <h3>\01F634 睡眠记录</h3>
+    <h3>😴 睡眠记录</h3>
     <div id="sleepCol"></div>
   </div>
   <div class="triple-col diet-col">
-    <h3>\01F37D\0FE0F 饮食记录</h3>
+    <h3>🍽️ 饮食记录</h3>
     <div id="dietCol"></div>
   </div>
 </div>
@@ -260,7 +260,7 @@ h1 { font-size:24px; margin-bottom:4px; }
 <div class="modal-overlay" id="sleepModal">
   <div class="modal slp-modal">
     <button class="modal-close" onclick="closeSleep()">\02715</button>
-    <h2>\01F634 睡眠记录</h2>
+    <h2>😴 睡眠记录</h2>
     <div id="sleepPwdBox" class="pwd-box">
       <p style="color:#888;font-size:13px;margin-bottom:12px;">输入密码以管理睡眠记录</p>
       <input type="password" id="sleepPwdInput" placeholder="输入密码" onkeydown="if(event.key==='Enter')verifySleepPwd()">
@@ -269,7 +269,7 @@ h1 { font-size:24px; margin-bottom:4px; }
     </div>
     <div class="edit-form" id="sleepEditForm">
       <div class="date-picker-top">
-        <label>\01F4C5 日期：</label>
+        <label>📅 日期：</label>
         <input type="date" id="sleepDatePicker" onchange="onSleepDateChange()">
       </div>
       <div id="sleepRecordsList"></div>
@@ -278,7 +278,7 @@ h1 { font-size:24px; margin-bottom:4px; }
           <div class="form-group"><label>入睡时间</label><input type="time" id="sBedTime"></div>
           <div class="form-group"><label>起床时间</label><input type="time" id="sWakeTime"></div>
         </div>
-        <div style="font-size:12px;color:#888;margin-bottom:8px;">\01F4A4 睡眠阶段（分钟）</div>
+        <div style="font-size:12px;color:#888;margin-bottom:8px;">💤 睡眠阶段（分钟）</div>
         <div class="form-row">
           <div class="form-group"><label style="color:#febc2e;">清醒</label><input type="number" id="sAwake" class="stage-input-awake" placeholder="0" min="0" oninput="updateSleepPie()"></div>
           <div class="form-group"><label style="color:#64b5f6;">快速眼动 (REM)</label><input type="number" id="sRem" class="stage-input-rem" placeholder="0" min="0" oninput="updateSleepPie()"></div>
@@ -306,7 +306,7 @@ h1 { font-size:24px; margin-bottom:4px; }
 <div class="modal-overlay" id="dietModal">
   <div class="modal diet-modal">
     <button class="modal-close" onclick="closeDiet()">\02715</button>
-    <h2>\01F37D\0FE0F 饮食记录</h2>
+    <h2>🍽️ 饮食记录</h2>
     <div id="dietPwdBox" class="pwd-box">
       <p style="color:#888;font-size:13px;margin-bottom:12px;">输入密码以管理饮食记录</p>
       <input type="password" id="dietPwdInput" placeholder="输入密码" onkeydown="if(event.key==='Enter')verifyDietPwd()">
@@ -315,7 +315,7 @@ h1 { font-size:24px; margin-bottom:4px; }
     </div>
     <div class="edit-form" id="dietEditForm">
       <div class="date-picker-top">
-        <label>\01F4C5 日期：</label>
+        <label>📅 日期：</label>
         <input type="date" id="dietDatePicker" onchange="onDietDateChange()">
       </div>
       <div id="dietDaySummary"></div>
@@ -535,11 +535,11 @@ function render() {
   });
 
   document.getElementById("statsRow").innerHTML = `
-    <div class="stat"><div class="stat-label">\u8BAD\u7EC3\u5929\u6570</div><div class="stat-value val-orange">\${trainDays}<span class="stat-unit">/\${displayDays}\u5929</span></div></div>
-    <div class="stat"><div class="stat-label">\u6709\u6C27\u6D88\u8017</div><div class="stat-value val-green">\${cardioKcal}<span class="stat-unit">kcal</span></div></div>
-    <div class="stat"><div class="stat-label">\u529B\u91CF\u6D88\u8017</div><div class="stat-value val-red">\${strengthKcal}<span class="stat-unit">kcal</span></div></div>
-    <div class="stat"><div class="stat-label">\u603B\u65F6\u957F</div><div class="stat-value val-orange">\${Math.round(totalTime/60)}<span class="stat-unit">\u5206\u949F</span></div></div>
-    <div class="stat"><div class="stat-label">\u603B\u6D88\u8017</div><div class="stat-value val-orange">\${cardioKcal+strengthKcal}<span class="stat-unit">kcal</span></div></div>`;
+    <div class="stat"><div class="stat-label">\u8BAD\u7EC3\u5929\u6570</div><div class="stat-value val-orange">${trainDays}<span class="stat-unit">/${displayDays}\u5929</span></div></div>
+    <div class="stat"><div class="stat-label">\u6709\u6C27\u6D88\u8017</div><div class="stat-value val-green">${cardioKcal}<span class="stat-unit">kcal</span></div></div>
+    <div class="stat"><div class="stat-label">\u529B\u91CF\u6D88\u8017</div><div class="stat-value val-red">${strengthKcal}<span class="stat-unit">kcal</span></div></div>
+    <div class="stat"><div class="stat-label">\u603B\u65F6\u957F</div><div class="stat-value val-orange">${Math.round(totalTime/60)}<span class="stat-unit">\u5206\u949F</span></div></div>
+    <div class="stat"><div class="stat-label">\u603B\u6D88\u8017</div><div class="stat-value val-orange">${cardioKcal+strengthKcal}<span class="stat-unit">kcal</span></div></div>`;
 
   let gridHTML = '';
   days.forEach(d => {
@@ -562,13 +562,13 @@ function render() {
       detail = isToday ? '\u4ECA\u5929' : (d > today ? '' : '\u4F11\u606F');
     }
     if (hasCardio && data.cardio[0]) {
-      detail += '\01F6B4 '+secToHMS(data.cardio[0].time)+' \u00B7 '+data.cardio[0].kcal+'kcal';
+      detail += '🚴 '+secToHMS(data.cardio[0].time)+' \u00B7 '+data.cardio[0].kcal+'kcal';
       if (data.cardio[0].dist) detail += ' \u00B7 '+data.cardio[0].dist+'km';
     }
     if (hasStrength) {
       const totalStrKcal = data.strength.reduce((a,s)=>a+(s.kcal||0),0);
       const totalStrTime = data.strength.reduce((a,s)=>a+(s.time||0),0);
-      detail += (detail?'<br>':'')+'\01F4AA '+secToHMS(totalStrTime)+' \u00B7 '+totalStrKcal+'kcal';
+      detail += (detail?'<br>':'')+'💪 '+secToHMS(totalStrTime)+' \u00B7 '+totalStrKcal+'kcal';
     }
     gridHTML += '<div class="'+cls+'"><div class="day-name">'+WEEKDAYS[d.getDay()===0?6:d.getDay()-1]+'</div><div class="day-date">'+fmtMD(d)+'</div>'+tags+'<div class="day-detail">'+detail+'</div></div>';
   });
@@ -584,7 +584,7 @@ function render() {
     const wd = WEEKDAYS[d.getDay()===0?6:d.getDay()-1];
     
     if (data.cardio) data.cardio.forEach(c => {
-      const icon = c.type.includes('\u9A91\u884C')?'\01F6B4':c.type.includes('\u8DD1')?'\01F3C3':c.type.includes('\u722C')?'\01FA9C':'\01F3CB\0FE0F';
+      const icon = c.type.includes('\u9A91\u884C')?'🚴':c.type.includes('\u8DD1')?'🏃':c.type.includes('\u722C')?'🦜':'🏋️';
       detailHTML += '<div class="detail-card cardio-border"><h2>'+icon+' '+fmtMD(d)+' '+wd+' \u00B7 '+c.type+'</h2>'
         +'<div class="stat-row">'
         +'<div class="stat"><div class="stat-label">\u65F6\u957F</div><div class="stat-value val-green">'+secToHMS(c.time)+'</div></div>'
@@ -595,7 +595,7 @@ function render() {
     });
     
     if (data.strength) data.strength.forEach((s, si) => {
-      detailHTML += '<div class="detail-card strength-border"><h2>\01F4AA '+fmtMD(d)+' '+wd+' \u00B7 '+s.name+'</h2>'
+      detailHTML += '<div class="detail-card strength-border"><h2>💪 '+fmtMD(d)+' '+wd+' \u00B7 '+s.name+'</h2>'
         +'<p style="color:#888;font-size:13px;margin-bottom:16px;">\u603B\u65F6\u957F '+secToHMS(s.time)+' \u00B7 \u6D88\u8017 '+s.kcal+'kcal</p>';
       s.exercises.forEach((ex,i) => {
         detailHTML += '<div class="exercise-card"><div class="ex-name">'+(i+1)+'. '+ex.name+'</div><div class="sets-grid">';
@@ -612,7 +612,7 @@ function render() {
   let analysis = '';
   if (isCurrentWeek) {
     const plan = ["\u529B\u91CF\u65E5","\u6709\u6C27\u65E5","\u529B\u91CF\u65E5","\u6709\u6C27\u65E5","\u529B\u91CF\u65E5","\u6709\u6C27\u65E5","\u4F11\u606F"];
-    analysis = '<strong>\01F4CB \u672C\u5468\u8BA1\u5212\u5BF9\u7167\uFF08\u4E00\u4E09\u4E94\u529B\u91CF / \u4E8C\u56DB\u516D\u6709\u6C27\uFF09\uFF1A</strong><br>';
+    analysis = '<strong>📋 \u672C\u5468\u8BA1\u5212\u5BF9\u7167\uFF08\u4E00\u4E09\u4E94\u529B\u91CF / \u4E8C\u56DB\u516D\u6709\u6C27\uFF09\uFF1A</strong><br>';
     days.forEach((d,i) => {
       if (d > today) { analysis += '\u2B1C '+fmtMD(d)+' '+WEEKDAYS[i]+'\uFF1A'+plan[i]+'<br>'; return; }
       const k = fmtDate(d);
@@ -620,15 +620,15 @@ function render() {
       const hasCardio = data?.cardio?.length;
       const hasStrength = data?.strength?.length;
       const actual = hasCardio && hasStrength ? 'both' : hasCardio ? '\u6709\u6C27' : hasStrength ? '\u529B\u91CF('+data.strength.length+'\u573A)' : '\u672A\u7EC3';
-      const icon = actual==='\u672A\u7EC3'?'\u274C':(plan[i].includes('\u529B\u91CF')&&actual.startsWith('\u6709\u6C27')||plan[i].includes('\u6709\u6C27')&&actual.startsWith('\u529B\u91CF'))?'\01F504':'\u2705';
+      const icon = actual==='\u672A\u7EC3'?'\u274C':(plan[i].includes('\u529B\u91CF')&&actual.startsWith('\u6709\u6C27')||plan[i].includes('\u6709\u6C27')&&actual.startsWith('\u529B\u91CF'))?'🔄':'\u2705';
       analysis += icon+' '+fmtMD(d)+' '+WEEKDAYS[i]+'\uFF1A'+actual+(actual==='\u672A\u7EC3'?'\uFF08\u7F3A\uFF09':'')+'<br>';
     });
-    analysis += '<br><strong>\01F4A1 \u63D0\u793A\uFF1A</strong><br>'
+    analysis += '<br><strong>💡 \u63D0\u793A\uFF1A</strong><br>'
       +'\u00B7 \u5168\u91CF\u6570\u636E\u8303\u56F4: '+firstDataDate+' \u2192 '+lastDataDate+'<br>'
       +'\u00B7 \u7EFF\u70B9\u7BA1\u7406\u7761\u7720\u8BB0\u5F55 \u00B7 \u9EC4\u70B9\u7BA1\u7406\u996E\u98DF\u8BB0\u5F55<br>'
       +'\u00B7 \u6BCF\u65E5\u81EA\u52A8\u7531 GitHub Actions \u66F4\u65B0';
   } else {
-    analysis = '<strong>\01F4CA \u5386\u53F2\u5468\u56DE\u987E</strong><br>'
+    analysis = '<strong>📊 \u5386\u53F2\u5468\u56DE\u987E</strong><br>'
       +'\u00B7 \u8FD9\u662F '+fmtMD(monday)+' \u5230 '+fmtMD(sunday)+' \u7684\u8BAD\u7EC3\u6570\u636E<br>'
       +'\u00B7 \u4F7F\u7528 \u25C2 \u25B8 \u7BAD\u5934\u56DE\u5230\u672C\u5468';
   }
@@ -647,10 +647,10 @@ function renderTriplePanels(days) {
     if (data && (data.cardio?.length || data.strength?.length)) {
       trainHTML += '<div class="panel-card train-panel"><div class="panel-date">'+dateLabel+'</div>';
       if (data.cardio) data.cardio.forEach(c => {
-        trainHTML += '\01F6B4 '+c.type+' \u00B7 '+secToHMS(c.time)+' \u00B7 '+c.kcal+'kcal<br>';
+        trainHTML += '🚴 '+c.type+' \u00B7 '+secToHMS(c.time)+' \u00B7 '+c.kcal+'kcal<br>';
       });
       if (data.strength) data.strength.forEach(s => {
-        trainHTML += '\01F4AA '+s.name+' \u00B7 '+secToHMS(s.time)+' \u00B7 '+s.kcal+'kcal<br>';
+        trainHTML += '💪 '+s.name+' \u00B7 '+secToHMS(s.time)+' \u00B7 '+s.kcal+'kcal<br>';
       });
       trainHTML += '</div>';
     } else {
